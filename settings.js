@@ -9,12 +9,12 @@ const chalk = require('chalk');
 
 //~~~~~~~~~~~~< GLOBAL SETTINGS >~~~~~~~~~~~~\\
 
-global.owner = ['6282113821188'] //['628','628'] 2 owner
-global.packname = 'Bot WhatsApp'
-global.author = 'Nazedev'
-global.botname = 'Naze Bot'
+global.owner = ['254725100848'] //['628','628'] 2 owner
+global.packname = 'LESTA-PRO'
+global.author = 'LESTA-PRO'
+global.botname = 'LESTA-PRO'
 global.listprefix = ['+','!','.']
-global.listv = ['•','●','■','✿','▲','➩','➢','➣','➤','✦','✧','△','❀','○','□','♤','♡','◇','♧','々','〆']
+global.listv = ['●','■','▲','➩','➢','➣','➤','□','♡']
 global.tempatDB = 'database.json' // Taruh url mongodb di sini jika menggunakan mongodb. Format : 'mongodb+srv://...'
 global.pairing_code = true
 global.number_bot = '' // Kalo pake panel bisa masukin nomer di sini, jika belum ambil session. Format : '628xx'
@@ -29,35 +29,35 @@ global.fake = {
 
 global.my = {
 	yt: 'https://youtube.com/c/Nazedev',
-	gh: 'https://github.com/nazedev',
+	gh: 'https://github.com/Tela634',
 	gc: 'https://chat.whatsapp.com/B5qJIwZHm4VEYZJQE6iMwy',
 	ch: '120363250409960161@newsletter',
 }
 
 global.limit = {
-	free: 20,
-	premium: 999,
-	vip: 9999
+	free: 2000000000,
+	premium: 9999999999999,
+	vip: 99999999999
 }
 
 global.uang = {
-	free: 10000,
-	premium: 1000000,
-	vip: 10000000
+	free: 1000000,
+	premium: 1000000000000000,
+	vip: 100000000000000000
 }
 
 global.mess = {
 	key: 'Apikey mu telah habis silahkan kunjungi\nhttps://my.hitori.pw',
-	owner: 'Fitur Khusus Owner!',
-	admin: 'Fitur Khusus Admin!',
-	botAdmin: 'Bot Bukan Admin!',
-	group: 'Gunakan Di Group!',
-	private: 'Gunakan Di Privat Chat!',
-	limit: 'Limit Anda Telah Habis!',
-	prem: 'Khusus User Premium!',
-	wait: 'Loading...',
-	error: 'Error!',
-	done: 'Done'
+	owner: '*Command for Owner* 🙇🏻!',
+	admin: '*Command for Admin* 👀!',
+	botAdmin: '*Bot must be Admin* 🗣️!',
+	group: '*command for Group* 👥!',
+	private: '*command for Privat Chat* 👤!',
+	limit: '*Limit Anda Telah Habis* !',
+	prem: '*for User Premium* !',
+	wait: '‹‹‹‹‹‹[★ *Processing* ★‽]››››...',
+	error: '*processing Error🤖!* ',
+	done: '*SUCCESS* 🌟🌟🌟🌟'
 }
 
 global.APIs = {
