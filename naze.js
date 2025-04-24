@@ -85,7 +85,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 		const hari = moment.tz('Asia/Jakarta').locale('id').format('dddd');
 		const tanggal = moment.tz('Asia/Jakarta').locale('id').format('DD/MM/YYYY');
 		const jam = moment.tz('Asia/Jakarta').locale('id').format('HH:mm:ss');
-		const ucapanWaktu = jam < '05:00:00' ? 'Selamat Pagi 🌉' : jam < '11:00:00' ? 'Selamat Pagi 🌄' : jam < '15:00:00' ? 'Selamat Siang 🏙' : jam < '18:00:00' ? 'Selamat Sore 🌅' : jam < '19:00:00' ? 'Selamat Sore 🌃' : jam < '23:59:00' ? 'Selamat Malam 🌌' : 'Selamat Malam 🌌';
+		const ucapanWaktu = jam < '05:00:00' ? '*WELCOME TO KENYA* 🇰🇪' : jam < '11:00:00' ? '*KENYA GOOD MORNING* 🇰🇪' : jam < '15:00:00' ? '*HELLO* 🇰🇪' : jam < '18:00:00' ? '*RADA NI GANI* 🇰🇪' : jam < '19:00:00' ? '*FORM NI GANI* ?🇰🇪' : jam < '23:59:00' ? '*ANGUKA NAYO* 🇰🇪' : 'LESTA_PRO-BOT 🌌';
 		const almost = 0.72
 		const time = Date.now()
 		const time_now = new Date()
@@ -174,7 +174,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 		// Auto Set Bio
 		if (set.autobio) {
 			if (new Date() * 1 - set.status > 60000) {
-				await naze.updateProfileStatus(`${naze.user.name} | 🎯 Runtime : ${runtime(process.uptime())}`).catch(e => {})
+				await naze.updateProfileStatus(`${naze.user.name} | HELLO KENYA 🇰🇪, MY AUTHOR~Eliud Njora- IS GREATFUL FOR SUPPORTING HIM.....THANK YOU ALL Runtime : ${runtime(process.uptime())}`).catch(e => {})
 				set.status = new Date() * 1
 			}
 		}
@@ -200,7 +200,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 			// Anti Hidetag
 			if (!m.key.fromMe && m.mentionedJid?.length === m.metadata.participants.length && db.groups[m.chat].antihidetag && !isCreator && m.isBotAdmin && !m.isAdmin) {
 				await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
-				await m.reply('*Anti Hidetag Sedang Aktif❗*')
+				await m.reply('*Anti Hidetag message alert ❗*')
 			}
 			
 			// Anti Tag Sw
@@ -234,8 +234,8 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 				if (store.messages && store.messages[m.chat] && store.messages[m.chat].array) {
 					const chats = store.messages[m.chat].array.find(a => a.id === mess.key.id);
 					if (!chats?.msg) return
-					chats.msg.contextInfo = { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Delete❗*'}, ...chats.key }
-					const pesan = chats.type === 'conversation' ? { extendedTextMessage: { text: chats.msg, contextInfo: { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Delete❗*'}, ...chats.key }}} : { [chats.type]: chats.msg }
+					chats.msg.contextInfo = { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Delete message Alert❗*'}, ...chats.key }
+					const pesan = chats.type === 'conversation' ? { extendedTextMessage: { text: chats.msg, contextInfo: { mentionedJid: [chats.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Delete Alert❗*'}, ...chats.key }}} : { [chats.type]: chats.msg }
 					await naze.relayMessage(m.chat, pesan, {})
 				}
 			}
@@ -244,7 +244,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 			if (db.groups[m.chat].antilink && !isCreator && m.isBotAdmin && !m.isAdmin) {
 				if (budy.match('chat.whatsapp.com/')) {
 					await naze.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
-					await naze.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Link Group\nMaaf Link Harus Di Hapus..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Link❗*'}, ...m.key }}}, {})
+					await naze.relayMessage(m.chat, { extendedTextMessage: { text: `Terdeteksi @${m.sender.split('@')[0]} Mengirim Link Group\nMaaf Link Harus Di Hapus..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Link message Alert❗*'}, ...m.key }}}, {})
 				}
 			}
 			
@@ -3302,9 +3302,9 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 				if (args[0] == 'set') {
 					if (['1','2','3'].includes(args[1])) {
 						set.template = parseInt(Number(args[1]))
-						m.reply('Sukses Mengubah Template Menu')
-					} else m.reply(`Silahkan Pilih Templat:\n- 1 (Button Menu)\n- 2 (List Menu)\n- 3 (Document Menu)`)
-				} else await templateMenu(naze, set.template, m, prefix, setv, db, { botNumber, isVip, isPremium })
+						m.reply('Success changed Template Menu👌🏻')
+					} else m.reply(`choose menu Template:\n- 1 (Button Menu)\n- 2 (List Menu)\n- 3 (Document Menu)`)
+				} else await templateMenu(naze, set.template, m, prefix, setv, db)
 			}
 			break
 			case 'allmenu': {
@@ -3315,8 +3315,8 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 					profile = fake.anonim
 				}
 				const menunya = `
-╭──❍「 *USER INFO* 」❍
-├ *Nama* : ${m.pushName ? m.pushName : 'Tanpa Nama'}
+╭──❍「 *LESTA_PRO_V1* 」❍
+├ *Nama* : ${m.pushName ? m.pushName : 'LESTA_PRO-MD'}
 ├ *Id* : @${m.sender.split('@')[0]}
 ├ *User* : ${isVip ? 'VIP' : isPremium ? 'PREMIUM' : 'FREE'}
 ├ *Limit* : ${isVip ? 'VIP' : db.users[m.sender].limit }
@@ -3560,17 +3560,17 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} $
 │${setv} >
 │${setv} <
-╰──────❍`
+╰────⟨LESTA_PRO-V1⟩──❍`
 				await m.reply({
 					document: fake.docs,
 					fileName: ucapanWaktu,
 					mimetype: pickRandom(fake.listfakedocs),
-					fileLength: '100000000000000',
-					pageCount: '999',
+					fileLength: '10',
+					pageCount: '1',
 					caption: menunya,
 					contextInfo: {
 						mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
-						forwardingScore: 10,
+						forwardingScore: 7,
 						isForwarded: true,
 						forwardedNewsletterMessageInfo: {
 							newsletterJid: my.ch,
@@ -3594,7 +3594,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 			break
 			case 'botmenu': {
 				m.reply(`
-╭──❍「 *BOT* 」❍
+╭──❍「 *LESTA_PRO-V1* 」❍
 │${setv} ${prefix}profile
 │${setv} ${prefix}claim
 │${setv} ${prefix}buy [item] (nominal)
@@ -3622,12 +3622,12 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}stopjadibot
 │${setv} ${prefix}listjadibot
 │${setv} ${prefix}donasi
-╰──────❍`)
+╰────⟨LESTA_PRO-V1⟩──❍`)
 			}
 			break
 			case 'groupmenu': {
 				m.reply(`
-╭──❍「 *GROUP* 」❍
+╭──❍「 *GROUP COMMANDS* 」❍
 │${setv} ${prefix}add (62xxx)
 │${setv} ${prefix}kick (@tag/62xxx)
 │${setv} ${prefix}promote (@tag/62xxx)
@@ -3647,7 +3647,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}listonline
 │${setv} ${prefix}group set
 │${setv} ${prefix}group (khusus admin)
-╰──────❍`)
+╰────⟨LESTA_PRO-V1⟩──❍`)
 			}
 			break
 			case 'searchmenu': {
@@ -3666,7 +3666,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}cuaca (kota)
 │${setv} ${prefix}tenor (query)
 │${setv} ${prefix}urban (query)
-╰──────❍`)
+╰────⟨LESTA_PRO-V1⟩──❍`)
 			}
 			break
 			case 'downloadmenu': {
@@ -3693,7 +3693,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}dare
 │${setv} ${prefix}bucin
 │${setv} ${prefix}renungan
-╰──────❍`)
+╰───⟨LESTA_PRO-V1⟩───❍`)
 			}
 			break
 			case 'toolsmenu': {
@@ -3740,7 +3740,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}earrape (reply audio)
 │${setv} ${prefix}nightcore (reply audio)
 │${setv} ${prefix}getexif (reply sticker)
-╰──────❍`)
+╰──⟨LESTA_PRO-V1⟩────❍`)
 			}
 			break
 			case 'aimenu': {
@@ -3750,14 +3750,14 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}simi (query)
 │${setv} ${prefix}gemini (query)
 │${setv} ${prefix}txt2img (query)
-╰──────❍`)
+╰───⟨LESTA_PRO-V1⟩───❍`)
 			}
 			break
 			case 'randommenu': {
 				m.reply(`
 ╭──❍「 *RANDOM* 」❍
 │${setv} ${prefix}coffe
-╰──────❍`)
+╰───⟨LESTA_PRO-V1⟩───❍`)
 			}
 			break
 			case 'stalkermenu': {
@@ -3769,7 +3769,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}tiktokstalk
 │${setv} ${prefix}githubstalk
 │${setv} ${prefix}genshinstalk
-╰──────❍`)
+╰────⟨LESTA_PRO-V1⟩──❍`)
 			}
 			break
 			case 'animemenu': {
@@ -3777,7 +3777,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 ╭──❍「 *ANIME* 」❍
 │${setv} ${prefix}waifu
 │${setv} ${prefix}neko
-╰──────❍`)
+╰────⟨LESTA_PRO-V1⟩──❍`)
 			}
 			break
 			case 'gamemenu': {
@@ -3804,7 +3804,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}tebaknegara
 │${setv} ${prefix}tebakgambar
 │${setv} ${prefix}tebakbendera
-╰──────❍`)
+╰───⟨LESTA_PRO-V1⟩───❍`)
 			}
 			break
 			case 'funmenu': {
@@ -3829,7 +3829,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} ${prefix}huluh (text)
 │${setv} ${prefix}heleh (text)
 │${setv} ${prefix}holoh (text)
-╰──────❍`)
+╰───⟨LESTA_PRO-V1⟩───❍`)
 			}
 			break
 			case 'ownermenu': {
@@ -3867,7 +3867,7 @@ module.exports = naze = async (naze, m, msg, store, groupCache) => {
 │${setv} $
 │${setv} >
 │${setv} <
-╰──────❍`)
+╰───⟨LESTA_PRO-V1⟩───❍`)
 			}
 			break
 
